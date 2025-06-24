@@ -1,0 +1,257 @@
+/* === Universal Reset & Base === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  color: #e2e8f0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* === Section Background (Matches Footer) === */
+.page-bg,
+.section-bg,
+.hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+.page-bg::before,
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.page-bg > *, .hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+p {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* === Hero Section === */
+.hero-section {
+  text-align: center;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.hero-section h1 {
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-button {
+  background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background: linear-gradient(45deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+}
+
+/* === Cards Section === */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 480px;
+  color: #e2e8f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.glass-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #ffffff;
+  position: relative;
+  text-align: left;
+}
+
+.glass-card h3::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+/* === Text Utilities === */
+.text-light-emphasis {
+  color: #94a3b8;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* === Link === */
+a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Button General === */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* === Responsive Padding === */
+@media (min-width: 992px) {
+  .page-bg, .section-bg {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+/* --- Header Styles (Matches Footer) --- */
+.site-header {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 1.5rem 2rem;
+  z-index: 10;
+}
+
+.header-overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #60a5fa;
+  transform: translateY(-2px);
+}
