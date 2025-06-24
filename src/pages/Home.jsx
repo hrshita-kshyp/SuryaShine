@@ -20,12 +20,10 @@ export default function Home() {
 
     const styles = {
         page: {
-            minHeight: '100vh',
             background: `
             radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
             linear-gradient(135deg, #1e3a8a 0%, #16213e 50%, #1a1a2e 75%, #0a0a0a 100%)
         `,
-            minHeight: '100vh',
             color: '#ffffff',
             fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
             position: 'relative',
