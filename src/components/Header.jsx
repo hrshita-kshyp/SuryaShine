@@ -77,11 +77,6 @@ export default function Header() {
             color: '#e2e8f0',
             cursor: 'pointer',
         },
-        nav: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem',
-        },
         navMenuDesktop: {
             display: 'flex',
             gap: '1rem',
@@ -98,11 +93,11 @@ export default function Header() {
             left: 0,
             right: 0,
             background: 'rgba(15, 23, 42, 0.95)',
-            padding: '1rem 1.5rem',
+            padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '1rem',
+            gap: '1.2rem',
             borderTop: '1px solid rgba(255,255,255,0.1)',
         },
         navLink: {
@@ -110,7 +105,7 @@ export default function Header() {
             textDecoration: 'none',
             padding: '0.6rem 1rem',
             borderRadius: '50px',
-            fontSize: '0.95rem',
+            fontSize: '1rem',
             fontWeight: 500,
         },
         ctaButton: {
@@ -120,7 +115,7 @@ export default function Header() {
             borderRadius: '50px',
             fontWeight: '600',
             textDecoration: 'none',
-            fontSize: '0.9rem',
+            fontSize: '0.95rem',
             transition: 'all 0.3s ease',
         },
     };
@@ -133,8 +128,8 @@ export default function Header() {
                         src={logo}
                         alt="Suryashine Logo"
                         style={styles.logo}
-                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                        onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                     />
                     <div style={styles.brandText}>
                         <h1 style={styles.brandName}>Suryashine</h1>
@@ -142,7 +137,7 @@ export default function Header() {
                     </div>
                 </Link>
 
-                {/* Desktop nav */}
+                {/* Desktop Nav */}
                 <nav className="desktop-nav" style={{ display: 'none' }}>
                     <ul style={styles.navMenuDesktop}>
                         {["Home", "About", "Services", "Industries"].map((item) => (
@@ -158,16 +153,27 @@ export default function Header() {
                     </ul>
                 </nav>
 
+                {/* Desktop CTA */}
+                <div className="desktop-cta" style={{ display: 'none' }}>
+                    <Link
+                        to="/contact"
+                        style={styles.ctaButton}
+                    >
+                        Contact Us
+                    </Link>
+                </div>
+
+                {/* Hamburger */}
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
                     style={styles.hamburger}
                     className="hamburger-btn"
                 >
-                    ☰
+                    {menuOpen ? '✖' : '☰'}
                 </button>
             </div>
 
-            {/* Mobile menu */}
+            {/* Mobile Menu */}
             {menuOpen && (
                 <div style={styles.navMenuMobile}>
                     {["Home", "About", "Services", "Industries"].map((item) => (
@@ -190,10 +196,13 @@ export default function Header() {
                 </div>
             )}
 
-            {/* Inline styles for responsiveness */}
+            {/* Responsive Style Tags */}
             <style>{`
                 @media (min-width: 768px) {
                     .desktop-nav {
+                        display: block !important;
+                    }
+                    .desktop-cta {
                         display: block !important;
                     }
                     .hamburger-btn {
@@ -205,7 +214,8 @@ export default function Header() {
                     .hamburger-btn {
                         display: block !important;
                     }
-                    .desktop-nav {
+                    .desktop-nav,
+                    .desktop-cta {
                         display: none !important;
                     }
                 }
