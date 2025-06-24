@@ -69,36 +69,49 @@ export default function Header() {
             margin: 0,
             fontSize: '0.8rem',
         },
-        navContainer: {
+        hamburger: {
+            display: 'none',
+            fontSize: '1.8rem',
+            background: 'none',
+            border: 'none',
+            color: '#e2e8f0',
+            cursor: 'pointer',
+        },
+        nav: {
             display: 'flex',
             alignItems: 'center',
             gap: '1rem',
         },
-        navLinks: {
-            display: menuOpen ? 'flex' : 'none',
-            flexDirection: 'column',
-            position: 'absolute',
-            top: '100%',
-            right: '1rem',
-            background: 'rgba(30, 41, 59, 0.95)',
-            padding: '1rem',
-            borderRadius: '12px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            zIndex: 999,
+        navMenuDesktop: {
+            display: 'flex',
+            gap: '1rem',
             listStyle: 'none',
             margin: 0,
+            padding: '0.3rem',
+            background: 'rgba(30, 41, 59, 0.6)',
+            borderRadius: '50px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
         },
-        navItem: {
-            marginBottom: '0.5rem',
+        navMenuMobile: {
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            background: 'rgba(15, 23, 42, 0.95)',
+            padding: '1rem 1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1rem',
+            borderTop: '1px solid rgba(255,255,255,0.1)',
         },
         navLink: {
             color: '#e2e8f0',
             textDecoration: 'none',
             padding: '0.6rem 1rem',
             borderRadius: '50px',
-            display: 'block',
-            fontSize: '0.9rem',
-            transition: 'all 0.3s ease',
+            fontSize: '0.95rem',
+            fontWeight: 500,
         },
         ctaButton: {
             background: 'linear-gradient(90deg, #3b82f6, #1d4ed8)',
@@ -109,24 +122,6 @@ export default function Header() {
             textDecoration: 'none',
             fontSize: '0.9rem',
             transition: 'all 0.3s ease',
-        },
-        hamburger: {
-            display: 'none',
-            fontSize: '1.5rem',
-            background: 'none',
-            border: 'none',
-            color: '#e2e8f0',
-            cursor: 'pointer',
-        },
-        desktopMenu: {
-            display: 'flex',
-            gap: '1rem',
-            listStyle: 'none',
-            margin: 0,
-            padding: '0.3rem',
-            background: 'rgba(30, 41, 59, 0.6)',
-            borderRadius: '50px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
         },
     };
 
@@ -147,29 +142,14 @@ export default function Header() {
                     </div>
                 </Link>
 
-                {/* Hamburger for mobile */}
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    style={styles.hamburger}
-                    className="hamburger-btn"
-                >
-                    ☰
-                </button>
-
-                {/* Navigation Links */}
-                <nav className="nav">
-                    <ul
-                        style={
-                            window.innerWidth <= 768 ? styles.navLinks : styles.desktopMenu
-                        }
-                        className="nav-menu"
-                    >
+                {/* Desktop nav */}
+                <nav className="desktop-nav" style={{ display: 'none' }}>
+                    <ul style={styles.navMenuDesktop}>
                         {["Home", "About", "Services", "Industries"].map((item) => (
-                            <li key={item} style={styles.navItem}>
+                            <li key={item}>
                                 <Link
                                     to={`/${item.toLowerCase()}`}
                                     style={styles.navLink}
-                                    onClick={() => setMenuOpen(false)}
                                 >
                                     {item}
                                 </Link>
@@ -178,37 +158,58 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                {/* CTA button (visible only in desktop view) */}
-                {window.innerWidth > 768 && (
+                <button
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    style={styles.hamburger}
+                    className="hamburger-btn"
+                >
+                    ☰
+                </button>
+            </div>
+
+            {/* Mobile menu */}
+            {menuOpen && (
+                <div style={styles.navMenuMobile}>
+                    {["Home", "About", "Services", "Industries"].map((item) => (
+                        <Link
+                            key={item}
+                            to={`/${item.toLowerCase()}`}
+                            style={styles.navLink}
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {item}
+                        </Link>
+                    ))}
                     <Link
                         to="/contact"
                         style={styles.ctaButton}
-                        onMouseOver={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
-                        }}
-                        onMouseOut={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
-                        }}
-                    >
-                        Contact Us
-                    </Link>
-                )}
-            </div>
-
-            {/* Mobile-only Contact button */}
-            {window.innerWidth <= 768 && menuOpen && (
-                <div style={{ marginTop: '0.5rem', paddingLeft: '1rem', paddingRight: '1rem' }}>
-                    <Link
-                        to="/contact"
-                        style={{ ...styles.ctaButton, display: 'block', textAlign: 'center' }}
                         onClick={() => setMenuOpen(false)}
                     >
                         Contact Us
                     </Link>
                 </div>
             )}
+
+            {/* Inline styles for responsiveness */}
+            <style>{`
+                @media (min-width: 768px) {
+                    .desktop-nav {
+                        display: block !important;
+                    }
+                    .hamburger-btn {
+                        display: none !important;
+                    }
+                }
+
+                @media (max-width: 767px) {
+                    .hamburger-btn {
+                        display: block !important;
+                    }
+                    .desktop-nav {
+                        display: none !important;
+                    }
+                }
+            `}</style>
         </header>
     );
 }
