@@ -1,16 +1,162 @@
+/* index.css - Mobile-First Approach */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(to right, #f7f9fc, #e5f0fa);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  color: white;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-.about-glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.backdrop-blur {
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.6);
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Navigation - Mobile First */
+.navbar {
+  background-color: transparent !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Sections */
+.section {
+  padding: 3rem 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Glassmorphism Component - Responsive */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-0.375rem);
+}
+
+/* Typography */
+h1, h2, h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Tablet Devices (768px and up) */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  
+  .section {
+    padding: 4rem 2rem;
+  }
+  
+  .glass {
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  footer {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+  }
+  
+  .glass {
+    padding: 2.5rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  footer {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+  .glass {
+    padding: 2.5rem;
+  }
+  
+  .glass:hover {
+    transform: translateY(-0.5rem);
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .glass {
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+  
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .glass:hover {
+      transform: none;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
 }
