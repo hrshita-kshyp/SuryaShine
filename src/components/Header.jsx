@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import logo from '../assets/logo.png';
 
 export default function Header() {
-    // Reset scroll position on home navigation
     useEffect(() => {
         const handleHomeClick = () => {
             if (window.location.pathname === '/') {
@@ -17,10 +16,7 @@ export default function Header() {
     const handleHomeClick = (e) => {
         e.preventDefault();
         window.history.replaceState(null, '', '/');
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const styles = {
@@ -31,27 +27,27 @@ export default function Header() {
             position: 'sticky',
             top: 0,
             zIndex: 1000,
-            padding: '12px 0',
+            padding: '1rem 0',
             borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
         },
         container: {
-            maxWidth: '1400px',
+            maxWidth: '90vw',
             margin: '0 auto',
-            padding: '0 40px',
+            padding: '0 1rem',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            flexWrap: 'wrap'
         },
         logoLink: {
             display: 'flex',
             alignItems: 'center',
             textDecoration: 'none',
-            gap: '16px'
+            gap: '1rem'
         },
         logo: {
-            height: '60px', // Larger logo size
+            height: '3.5rem',
             width: 'auto',
-            transform: 'scale(1.2)', // Zoomed out effect
             transition: 'transform 0.3s ease'
         },
         brandText: {
@@ -59,27 +55,32 @@ export default function Header() {
             flexDirection: 'column'
         },
         brandName: {
-            fontSize: '1.8rem',
+            fontSize: '1.5rem',
             fontWeight: '700',
             background: 'white',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             margin: 0
         },
+        brandSub: {
+            color: '#94a3b8',
+            margin: 0,
+            fontSize: '0.8rem'
+        },
         navContainer: {
             display: 'flex',
             alignItems: 'center',
-            gap: '24px'
+            gap: '1rem',
+            flexWrap: 'wrap'
         },
         navLinks: {
             display: 'flex',
-            gap: '4px',
+            gap: '0.5rem',
             listStyle: 'none',
             margin: 0,
-            padding: 0,
+            padding: '0.3rem',
             background: 'rgba(30, 41, 59, 0.6)',
             borderRadius: '50px',
-            padding: '6px',
             border: '1px solid rgba(255, 255, 255, 0.1)'
         },
         navItem: {
@@ -88,18 +89,20 @@ export default function Header() {
         navLink: {
             color: '#e2e8f0',
             textDecoration: 'none',
-            padding: '12px 24px',
+            padding: '0.6rem 1rem',
             borderRadius: '50px',
             display: 'block',
+            fontSize: '0.9rem',
             transition: 'all 0.3s ease'
         },
         ctaButton: {
             background: 'linear-gradient(90deg, #3b82f6, #1d4ed8)',
             color: 'white',
-            padding: '12px 28px',
+            padding: '0.6rem 1.5rem',
             borderRadius: '50px',
             fontWeight: '600',
             textDecoration: 'none',
+            fontSize: '0.9rem',
             transition: 'all 0.3s ease'
         }
     };
@@ -107,44 +110,29 @@ export default function Header() {
     return (
         <header style={styles.header}>
             <div style={styles.container}>
-                <Link
-                    to="/"
-                    style={styles.logoLink}
-                    onClick={handleHomeClick}
-                >
+                <Link to="/" style={styles.logoLink} onClick={handleHomeClick}>
                     <img
                         src={logo}
                         alt="Suryashine Logo"
                         style={styles.logo}
-                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.3)'}
-                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
+                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                     />
                     <div style={styles.brandText}>
                         <h1 style={styles.brandName}>Suryashine</h1>
-                        <p style={{ color: '#94a3b8', margin: 0, fontSize: '0.9rem' }}>Digital Solutions</p>
+                        <p style={styles.brandSub}>Digital Solutions</p>
                     </div>
                 </Link>
 
                 <div style={styles.navContainer}>
                     <nav>
                         <ul style={styles.navLinks}>
-                            <li style={styles.navItem}>
-                                <Link
-                                    to="/"
-                                    style={styles.navLink}
-                                    onClick={handleHomeClick}
-                                >
-                                    Home
-                                </Link>
-                            </li>
-                            {['About', 'Services', 'Industries'].map((item) => (
+                            {/* <li style={styles.navItem}>
+                                <Link to="/hom" style={styles.navLink} onClick={handleHomeClick}>Home</Link>
+                            </li> */}
+                            {["Home", "About", "Services", "Industries"].map((item) => (
                                 <li key={item} style={styles.navItem}>
-                                    <Link
-                                        to={`/${item.toLowerCase()}`}
-                                        style={styles.navLink}
-                                    >
-                                        {item}
-                                    </Link>
+                                    <Link to={`/${item.toLowerCase()}`} style={styles.navLink}>{item}</Link>
                                 </li>
                             ))}
                         </ul>

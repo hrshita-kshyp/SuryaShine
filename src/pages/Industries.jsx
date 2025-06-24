@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Industries() {
     const styles = {
         page: {
@@ -9,14 +11,14 @@ export default function Industries() {
         container: {
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '0 40px'
+            padding: '0 20px' // Reduced padding for smaller screens
         },
         header: {
             textAlign: 'center',
-            marginBottom: '60px'
+            marginBottom: '40px'
         },
         title: {
-            fontSize: '2.8rem',
+            fontSize: '2.2rem',
             fontWeight: '800',
             background: 'linear-gradient(90deg, #ffffff, #e0e7ff)',
             WebkitBackgroundClip: 'text',
@@ -25,7 +27,7 @@ export default function Industries() {
             lineHeight: '1.2'
         },
         subtitle: {
-            fontSize: '1.2rem',
+            fontSize: '1rem',
             color: '#cbd5e1',
             maxWidth: '800px',
             margin: '0 auto',
@@ -33,14 +35,15 @@ export default function Industries() {
         },
         industriesGrid: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-            gap: '32px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '24px',
+            marginTop: '40px'
         },
         industryCard: {
             background: 'rgba(30, 41, 59, 0.5)',
             backdropFilter: 'blur(12px)',
             borderRadius: '16px',
-            padding: '40px',
+            padding: '30px',
             border: '1px solid rgba(255, 255, 255, 0.08)',
             transition: 'all 0.3s ease',
             position: 'relative',
@@ -58,19 +61,19 @@ export default function Industries() {
             zIndex: -1
         },
         industryIcon: {
-            fontSize: '2.5rem',
-            marginBottom: '20px',
+            fontSize: '2rem',
+            marginBottom: '16px',
             background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
         },
         industryTitle: {
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             fontWeight: '600',
             color: 'white',
-            marginBottom: '16px',
+            marginBottom: '12px',
             position: 'relative',
-            paddingBottom: '12px'
+            paddingBottom: '8px'
         },
         titleBar: {
             position: 'absolute',
@@ -83,8 +86,8 @@ export default function Industries() {
         },
         industryDescription: {
             color: '#cbd5e1',
-            fontSize: '1rem',
-            lineHeight: '1.7',
+            fontSize: '0.95rem',
+            lineHeight: '1.6',
             margin: 0
         }
     };

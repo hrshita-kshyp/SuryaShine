@@ -41,7 +41,7 @@ export default function About() {
         },
         cardsContainer: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '32px',
             marginTop: '60px'
         },
@@ -49,7 +49,7 @@ export default function About() {
             background: 'rgba(30, 41, 59, 0.5)',
             backdropFilter: 'blur(12px)',
             borderRadius: '16px',
-            padding: '40px',
+            padding: '32px',
             border: '1px solid rgba(255, 255, 255, 0.08)',
             transition: 'all 0.3s ease',
             textAlign: 'left'
@@ -85,7 +85,8 @@ export default function About() {
             flexWrap: 'wrap'
         },
         statItem: {
-            textAlign: 'center'
+            textAlign: 'center',
+            minWidth: '120px'
         },
         statNumber: {
             fontSize: '3rem',
@@ -182,6 +183,27 @@ export default function About() {
                     </div>
                 </div>
             </div>
+
+            {/* Responsive tweaks */}
+            <style>{`
+                @media (max-width: 768px) {
+                    h2 {
+                        font-size: 2rem !important;
+                    }
+                    p {
+                        font-size: 1rem !important;
+                    }
+                    .card {
+                        padding: 24px !important;
+                    }
+                    .statNumber {
+                        font-size: 2.2rem !important;
+                    }
+                    .statsContainer {
+                        gap: 24px !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

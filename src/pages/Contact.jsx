@@ -37,7 +37,8 @@ export default function Contact() {
             borderRadius: '16px',
             padding: '40px',
             border: '1px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+            marginTop: '40px'
         },
         formGroup: {
             marginBottom: '24px'
@@ -56,12 +57,6 @@ export default function Contact() {
             borderRadius: '8px',
             color: 'white',
             fontSize: '1rem',
-            transition: 'all 0.3s ease',
-            '&:focus': {
-                outline: 'none',
-                borderColor: '#3b82f6',
-                boxShadow: '0 0 0 3px rgba(59, 130, 246, 0.2)'
-            }
         },
         textarea: {
             minHeight: '150px',
@@ -79,31 +74,6 @@ export default function Contact() {
             width: '100%',
             transition: 'all 0.3s ease',
             boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
-            '&:hover': {
-                transform: 'translateY(-2px)',
-                boxShadow: '0 6px 20px rgba(59, 130, 246, 0.6)'
-            }
-        },
-        contactInfo: {
-            marginTop: '60px',
-            textAlign: 'center'
-        },
-        infoTitle: {
-            fontSize: '1.2rem',
-            color: '#cbd5e1',
-            marginBottom: '20px'
-        },
-        infoItem: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '10px',
-            marginBottom: '12px',
-            color: '#e2e8f0'
-        },
-        infoIcon: {
-            color: '#3b82f6',
-            fontSize: '1.2rem'
         }
     };
 
@@ -121,41 +91,22 @@ export default function Contact() {
                     <form>
                         <div style={styles.formGroup}>
                             <label htmlFor="name" style={styles.label}>Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                placeholder="Your full name"
-                                style={styles.input}
-                            />
+                            <input type="text" id="name" placeholder="Your full name" style={styles.input} />
                         </div>
 
                         <div style={styles.formGroup}>
                             <label htmlFor="company" style={styles.label}>Company</label>
-                            <input
-                                type="text"
-                                id="company"
-                                placeholder="Company or organization name"
-                                style={styles.input}
-                            />
+                            <input type="text" id="company" placeholder="Company or organization name" style={styles.input} />
                         </div>
 
                         <div style={styles.formGroup}>
                             <label htmlFor="email" style={styles.label}>Email</label>
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="your@example.com"
-                                style={styles.input}
-                            />
+                            <input type="email" id="email" placeholder="your@example.com" style={styles.input} />
                         </div>
 
                         <div style={styles.formGroup}>
                             <label htmlFor="message" style={styles.label}>Message</label>
-                            <textarea
-                                id="message"
-                                placeholder="Your message..."
-                                style={{ ...styles.input, ...styles.textarea }}
-                            ></textarea>
+                            <textarea id="message" placeholder="Your message..." style={{ ...styles.input, ...styles.textarea }} />
                         </div>
 
                         <button
@@ -174,10 +125,30 @@ export default function Contact() {
                         </button>
                     </form>
                 </div>
-
-
-
             </div>
+
+            {/* Mobile Responsiveness */}
+            <style>{`
+                @media (max-width: 768px) {
+                    h2 {
+                        font-size: 2rem !important;
+                    }
+                    p {
+                        font-size: 1rem !important;
+                    }
+                    input, textarea {
+                        font-size: 1rem !important;
+                        padding: 10px 14px !important;
+                    }
+                    button {
+                        padding: 14px 24px !important;
+                        font-size: 1rem !important;
+                    }
+                    .formContainer {
+                        padding: 24px !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }
