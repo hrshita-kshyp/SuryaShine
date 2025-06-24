@@ -25,7 +25,8 @@ export default function Header() {
 
     const styles = {
         header: {
-            background: 'rgba(15, 23, 42, 0.98)',
+            background: 'transparent',
+            color: '#e2e8f0',
             backdropFilter: 'blur(16px)',
             position: 'sticky',
             top: 0,
@@ -60,7 +61,7 @@ export default function Header() {
         brandName: {
             fontSize: '1.8rem',
             fontWeight: '700',
-            background: 'linear-gradient(90deg, #3b82f6, #8b5cf6)',
+            background: 'white',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             margin: 0
